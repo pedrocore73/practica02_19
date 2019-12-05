@@ -6,6 +6,7 @@ let cors = require('cors');
 let app = express();
 
 let usuario = require('./routes/usuario');
+let login = require('./routes/login');
 
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost:27017/shop', {useNewUrlParser: true})
@@ -22,6 +23,7 @@ app.use(bodyParser.json({strict: false}));
 app.use(bodyParser.urlencoded({'extended':'false'}));
 
 app.use('/usuario', usuario);
+app.use('/login', login);
 
 app.listen(8080, ()=>{
     console.log('Servidor escuchando en http://localhost:8080');
