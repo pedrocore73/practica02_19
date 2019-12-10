@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({'extended':'false'}));
 
 app.use('/usuario', usuario);
 app.use('/login', login);
+app.use('/imagenes', express.static('imagenes'));
 
 app.listen(8080, ()=>{
     console.log('Servidor escuchando en http://localhost:8080');

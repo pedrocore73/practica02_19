@@ -27,6 +27,7 @@ app.post('/', (req, res)=>{
 
        let token = jsonwebtoken.sign({usuario: usuario}, 'hdsjdhkfhs', {expiresIn: 24*60*60*1000});
        res.status(200).json({
+           imagen: usuario.imagen,
            token: token
        });
 

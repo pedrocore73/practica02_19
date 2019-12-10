@@ -25,7 +25,8 @@ app.post('/', (req, res) => {
     let usuario = new Usuario({
         nombre: body.nombre,
         email: body.email,
-        password: bcryptjs.hashSync(body.password, 10)
+        password: bcryptjs.hashSync(body.password, 10),
+        imagen: 'user.svg'
     });
     usuario.save((err, usuario)=>{
         if(err) {
