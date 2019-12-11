@@ -40,8 +40,8 @@ app.post('/', (req, res) => {
     });
 });
 
-app.put('/:id', (req, res) =>{
-    let _id = req.params.id;
+app.put('/', protectHttp.checkToken, (req, res) =>{
+    let _id = req._id;
     let body = req.body;
 
     Usuario.findById(_id).exec((err, usuario) => {
