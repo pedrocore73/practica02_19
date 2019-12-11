@@ -40,4 +40,33 @@ app.post('/', (req, res) => {
     });
 });
 
+app.put('/:id', (req, res) =>{
+    let _id = req.params.id;
+    let body = req.body;
+
+    Usuario.findById(_id).exec((err, usuario) => {
+        if(err) {
+            return res.status(500).json({
+                error: err
+            });
+        }
+        usuario.nombre = body.nombre;
+        usuario.direccion = body.direccion;
+        usuario.cp = body.cp;
+        usuario.localidad = body.localidad;
+        usuario.imagen = body.imagen;
+
+        usuario.save((err, data)=>{
+            if(err) {
+                return res.status(400).json({
+                    error: err
+                })
+            }
+            res.status(200).json({
+                mensaje: 'Usuario actualizado correctamente'
+            })
+        })
+    })
+})
+
 module.exports = app;
